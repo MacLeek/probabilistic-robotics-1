@@ -2,7 +2,7 @@
 
 from random import random
 
-def marcov_chain_simulate(n_steps, p_matrix, init_state = 0):
+def markov_chain_simulate(n_steps, p_matrix, init_state = 0):
     p_cum_matrix = [[sum(row[0:i+1]) for i in range(len(row))] for row in p_matrix]
     states = [init_state]
     cur_state = init_state
@@ -21,6 +21,6 @@ def marcov_chain_simulate(n_steps, p_matrix, init_state = 0):
 if __name__ == '__main__':
     n_steps = 1000000
     p_matrix = [[0.8, 0.2, 0.0], [0.4, 0.4, 0.2], [0.2, 0.6, 0.2]]
-    states = marcov_chain_simulate(n_steps, p_matrix)
+    states = markov_chain_simulate(n_steps, p_matrix)
     stat_prob = [float(states.count(i))/len(states) for i in sorted(set(states))]
     print stat_prob
